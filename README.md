@@ -16,6 +16,10 @@ Telegraf is plugin-driven and has the concept of 4 distinct plugin types:
 New plugins are designed to be easy to contribute, we'll eagerly accept pull
 requests and will manage the set of plugins that Telegraf supports.
 
+## Try in Browser :rocket:
+
+You can try Telegraf right in your browser in the [Telegraf playground](https://rootnroll.com/d/telegraf/).
+
 ## Contributing
 
 There are many ways to contribute:
@@ -38,7 +42,7 @@ Ansible role: https://github.com/rossmcdonald/telegraf
 
 Telegraf requires golang version 1.9 or newer, the Makefile requires GNU make.
 
-1. [Install Go](https://golang.org/doc/install) >=1.9 (1.10 recommended)
+1. [Install Go](https://golang.org/doc/install) >=1.9 (1.11 recommended)
 2. [Install dep](https://golang.github.io/dep/docs/installation.html) ==v0.5.0
 3. Download Telegraf source:
    ```
@@ -139,6 +143,7 @@ For documentation on the latest development code see the [documentation index][d
 * [aws cloudwatch](./plugins/inputs/cloudwatch)
 * [bcache](./plugins/inputs/bcache)
 * [beanstalkd](./plugins/inputs/beanstalkd)
+* [bind](./plugins/inputs/bind)
 * [bond](./plugins/inputs/bond)
 * [burrow](./plugins/inputs/burrow)
 * [cassandra](./plugins/inputs/cassandra) (deprecated, use [jolokia2](./plugins/inputs/jolokia2))
@@ -146,6 +151,7 @@ For documentation on the latest development code see the [documentation index][d
 * [cgroup](./plugins/inputs/cgroup)
 * [chrony](./plugins/inputs/chrony)
 * [cloud_pubsub](./plugins/inputs/cloud_pubsub) Google Cloud Pub/Sub
+* [cloud_pubsub_push](./plugins/inputs/cloud_pubsub_push) Google Cloud Pub/Sub push endpoint
 * [conntrack](./plugins/inputs/conntrack)
 * [consul](./plugins/inputs/consul)
 * [couchbase](./plugins/inputs/couchbase)
@@ -167,6 +173,7 @@ For documentation on the latest development code see the [documentation index][d
 * [filestat](./plugins/inputs/filestat)
 * [filecount](./plugins/inputs/filecount)
 * [fluentd](./plugins/inputs/fluentd)
+* [github](./plugins/inputs/github)
 * [graylog](./plugins/inputs/graylog)
 * [haproxy](./plugins/inputs/haproxy)
 * [hddtemp](./plugins/inputs/hddtemp)
@@ -190,10 +197,12 @@ For documentation on the latest development code see the [documentation index][d
 * [jti_openconfig_telemetry](./plugins/inputs/jti_openconfig_telemetry)
 * [kafka_consumer](./plugins/inputs/kafka_consumer)
 * [kapacitor](./plugins/inputs/kapacitor)
+* [kinesis](./plugins/inputs/kinesis_consumer)
 * [kernel](./plugins/inputs/kernel)
 * [kernel_vmstat](./plugins/inputs/kernel_vmstat)
 * [kibana](./plugins/inputs/kibana)
 * [kubernetes](./plugins/inputs/kubernetes)
+* [kube_inventory](./plugins/inputs/kube_inventory)
 * [leofs](./plugins/inputs/leofs)
 * [linux_sysctl_fs](./plugins/inputs/linux_sysctl_fs)
 * [logparser](./plugins/inputs/logparser)
@@ -206,18 +215,20 @@ For documentation on the latest development code see the [documentation index][d
 * [minecraft](./plugins/inputs/minecraft)
 * [mongodb](./plugins/inputs/mongodb)
 * [mqtt_consumer](./plugins/inputs/mqtt_consumer)
+* [multifile](./plugins/inputs/multifile)
 * [mysql](./plugins/inputs/mysql)
 * [nats_consumer](./plugins/inputs/nats_consumer)
 * [nats](./plugins/inputs/nats)
+* [neptune_apex](./plugins/inputs/neptune_apex)
 * [net](./plugins/inputs/net)
 * [net_response](./plugins/inputs/net_response)
 * [netstat](./plugins/inputs/net)
 * [nginx](./plugins/inputs/nginx)
-* [nginx_plus](./plugins/inputs/nginx_plus)
 * [nginx_plus_api](./plugins/inputs/nginx_plus_api)
+* [nginx_plus](./plugins/inputs/nginx_plus)
+* [nginx_upstream_check](./plugins/inputs/nginx_upstream_check)
 * [nginx_vts](./plugins/inputs/nginx_vts)
 * [nsq_consumer](./plugins/inputs/nsq_consumer)
-* [nginx_vts](./plugins/inputs/nginx_vts)
 * [nsq](./plugins/inputs/nsq)
 * [nstat](./plugins/inputs/nstat)
 * [ntpq](./plugins/inputs/ntpq)
@@ -233,6 +244,7 @@ For documentation on the latest development code see the [documentation index][d
 * [postgresql_extensible](./plugins/inputs/postgresql_extensible)
 * [postgresql](./plugins/inputs/postgresql)
 * [powerdns](./plugins/inputs/powerdns)
+* [powerdns_recursor](./plugins/inputs/powerdns_recursor)
 * [processes](./plugins/inputs/processes)
 * [procstat](./plugins/inputs/procstat)
 * [prometheus](./plugins/inputs/prometheus) (can be used for [Caddy server](./plugins/inputs/prometheus/README.md#usage-for-caddy-http-server))
@@ -250,6 +262,7 @@ For documentation on the latest development code see the [documentation index][d
 * [socket_listener](./plugins/inputs/socket_listener)
 * [solr](./plugins/inputs/solr)
 * [sql server](./plugins/inputs/sqlserver) (microsoft)
+* [stackdriver](./plugins/inputs/stackdriver)
 * [statsd](./plugins/inputs/statsd)
 * [swap](./plugins/inputs/swap)
 * [syslog](./plugins/inputs/syslog)
@@ -276,6 +289,7 @@ For documentation on the latest development code see the [documentation index][d
 * [win_perf_counters](./plugins/inputs/win_perf_counters) (windows performance counters)
 * [win_services](./plugins/inputs/win_services)
 * [wireless](./plugins/inputs/wireless)
+* [x509_cert](./plugins/inputs/x509_cert)
 * [zfs](./plugins/inputs/zfs)
 * [zipkin](./plugins/inputs/zipkin)
 * [zookeeper](./plugins/inputs/zookeeper)
@@ -299,7 +313,10 @@ For documentation on the latest development code see the [documentation index][d
 - [InfluxDB Line Protocol](/plugins/serializers/influx)
 - [JSON](/plugins/serializers/json)
 - [Graphite](/plugins/serializers/graphite)
+- [ServiceNow](/plugins/serializers/nowmetric)
 - [SplunkMetric](/plugins/serializers/splunkmetric)
+- [Carbon2](/plugins/serializers/carbon2)
+- [Wavefront](/plugins/serializers/wavefront)
 
 ## Processor Plugins
 
@@ -330,6 +347,7 @@ For documentation on the latest development code see the [documentation index][d
 * [aws kinesis](./plugins/outputs/kinesis)
 * [aws cloudwatch](./plugins/outputs/cloudwatch)
 * [azure_monitor](./plugins/outputs/azure_monitor)
+* [cloud_pubsub](./plugins/outputs/cloud_pubsub) Google Cloud Pub/Sub
 * [cratedb](./plugins/outputs/cratedb)
 * [datadog](./plugins/outputs/datadog)
 * [discard](./plugins/outputs/discard)
